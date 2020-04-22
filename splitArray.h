@@ -4,6 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int* array;
+#define LENGTH(a) (int)sizeof(a)/(int)sizeof(a[0])
+
+typedef int * Array;
+
+typedef struct
+{
+  Array list;
+  int length;
+}Split_Array;
+
+Split_Array *get_split_array_by_range(Array,Array,int);
 
 #endif
