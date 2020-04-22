@@ -61,5 +61,27 @@ Split_Array *get_split_array_by_range(Array num,Array range,int length)
   return create_split_array(result,sizes, 3);
 }
 
+void print_split_array(Split_Array result)
+{
+  printf("seperated array is :\n");
+  O_BRACKET;
+  for (int i = 0; i < result.length; i++)
+  {
+    O_BRACKET;
+    int length = result.list[i]->length;
+    if(length>0)
+    {
+      for (int j = 0; j < length-1; j++)
+      {
+        printf("%d,", result.list[i]->list[j]);
+      }
+      printf("%d",result.list[i]->list[length-1]);
+    }
+    C_BRACKET;
+    COMA;
+  }
+  C_BRACKET;
+  EMPTY_LINE;
+}
 
 #endif
