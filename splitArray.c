@@ -5,13 +5,17 @@
 
 Dynamic_Array *copy_array_on_heap(Array num,int length)
 {
+  Dynamic_Array * final = malloc(sizeof(Dynamic_Array));
+  final->length = length;
+  if(length==0){
+    final->list = malloc(sizeof(Array));
+    return final;
+  }
   Array list = malloc(sizeof(int) * length);
   for (int i = 0; i < length; i++)
   {
     list[i] = num[i];
   }
-  Dynamic_Array * final = malloc(sizeof(Dynamic_Array));
-  final->length = length;
   final->list = list;
   return final;
 }
