@@ -3,9 +3,34 @@
 
 #include "splitArray.h"
 
+Dynamic_Array *copy_array_on_heap(Array num,int length)
+{
+  Array list = malloc(sizeof(int) * length);
+  for (int i = 0; i < length; i++)
+  {
+    list[i] = num[i];
+  }
+  Dynamic_Array * final = malloc(sizeof(Dynamic_Array));
+  final->length = length;
+  final->list = list;
+  return final;
+}
+
+Split_Array *create_split_array(Array *numbers, Array sizes, int length)
+{
+  Dynamic_Array ** list = malloc(sizeof(Dynamic_Array *) *length);
+  for (int i = 0; i < length; i++)
+  {
+    list[i] = copy_array_on_heap(numbers[i],sizes[i]);
+  }
+  Split_Array * final = malloc(sizeof(Split_Array));
+  final->list = list;
+  final->length = length;
+  return final;
+}
+
 Split_Array *get_split_array_by_range(Array num,Array range,int length)
 {
-  Split_Array * final;
   int first[length];
   int count_f = 0;
   int second[length];
@@ -27,10 +52,9 @@ Split_Array *get_split_array_by_range(Array num,Array range,int length)
     second[count_s] = num[i];
     count_s++;
   }
-  printf("%d %d %d\n",first[0],first[1],first[2]);
-  printf("%d %d %d %d\n",second[0],second[1],second[2],second[3]);
-  printf("%d",third[0]);
-  return final;
+  Array result[] = {first,second,third};
+  int sizes[] =  {count_f,count_s,count_t};
+  return create_split_array(result,sizes, 3);
 }
 
 
