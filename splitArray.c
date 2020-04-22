@@ -36,28 +36,25 @@ Split_Array *create_split_array(Array *numbers, Array sizes, int length)
 Split_Array *get_split_array_by_range(Array num,Array range,int length)
 {
   int first[length];
-  int count_f = 0;
+  int sizes[3] = {0,0,0};
   int second[length];
-  int count_s = 0;
   int third[length];
-  int count_t = 0;
   for (int i = 0; i < length; i++)
   {
     if(num[i]<range[0]){
-      first[count_f] = num[i];
-      count_f++;
+      first[sizes[0]] = num[i];
+      sizes[0]++;
       continue;
     }
     if(num[i]>range[1]){
-      third[count_t] = num[i];
-      count_t++;
+      third[sizes[2]] = num[i];
+      sizes[2]++;
       continue;
     }
-    second[count_s] = num[i];
-    count_s++;
+    second[sizes[1]] = num[i];
+    sizes[1]++;
   }
   Array result[] = {first,second,third};
-  int sizes[] =  {count_f,count_s,count_t};
   return create_split_array(result,sizes, 3);
 }
 
