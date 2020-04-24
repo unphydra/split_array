@@ -1,7 +1,7 @@
 #ifndef __SPLIT_ARRAY_C_
 #define __SPLIT_ARRAY_C_
 
-#include "splitArray.h"
+#include "split_array.h"
 
 Dynamic_Array *copy_array_on_heap(Array num,int length)
 {
@@ -20,7 +20,7 @@ Dynamic_Array *copy_array_on_heap(Array num,int length)
   return final;
 }
 
-Split_Array *create_split_array(Array *numbers, Array sizes, int length)
+Split_Array *create_split_array(Arrays numbers, Array sizes, int length)
 {
   Dynamic_Array ** list = malloc(sizeof(Dynamic_Array *) *length);
   for (int i = 0; i < length; i++)

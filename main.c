@@ -1,4 +1,4 @@
-#include "splitArray.h"
+#include "split_array.h"
 
 int main(void)
 {
